@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #886F1D;
+  --brand-secondary: #C5A059;
+  --site-bg: #0B1D15;
+  --site-surface: #132A20;
+  --site-border: #2A4D3E;
+  --site-heading: #F3E5AB;
+  --site-body: #D1E0D7;
+  /* Aliases matching the mockup's own :root variable names — Claude sometimes
+     carries an inline style referencing var(--color-bg) etc. straight through
+     from the mockup instead of converting it to the --site-* or --brand-*
+     names. Defining both means either form resolves correctly. */
+  --color-primary: #886F1D;
+  --color-secondary: #C5A059;
+  --color-bg: #0B1D15;
+  --color-surface: #132A20;
+  --color-border: #2A4D3E;
+  --color-heading: #F3E5AB;
+  --color-body: #D1E0D7;
+}
+
+/* Hero background photo's focal point, set independently per breakpoint
+   from the Branding panel's click-to-position picker (client.hero_focal_
+   desktop/mobile) and applied by nextJsAppFile via
+   style.setProperty('--hero-focal-desktop'/'--hero-focal-mobile', ...) on
+   #hero-bg-image itself. A full-bleed hero's own aspect ratio changes
+   dramatically between a wide desktop banner and a narrow/tall mobile one,
+   so the same object-position crop rarely looks right on both — this is
+   why it's two separate variables switched by a media query, not one.
+   Falls back to plain center-center until a client sets one. */
+#hero-bg-image {
+  object-position: var(--hero-focal-mobile, center);
+}
+@media (min-width: 768px) {
+  #hero-bg-image {
+    object-position: var(--hero-focal-desktop, center);
+  }
+}
