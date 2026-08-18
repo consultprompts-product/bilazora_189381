@@ -91,7 +91,7 @@ export default function HomePage() {
             <a href="#gallery-section" className="text-sm tracking-wide text-[var(--site-heading)] hover:text-[var(--brand-secondary)] transition-colors duration-200">Gallery</a>
             <a href="#reviews-section" className="text-sm tracking-wide text-[var(--site-heading)] hover:text-[var(--brand-secondary)] transition-colors duration-200">Reviews</a>
             <a href="#location-section" className="text-sm tracking-wide text-[var(--site-heading)] hover:text-[var(--brand-secondary)] transition-colors duration-200">Location</a>
-            <a href="#contact" className="ml-4 px-6 py-2.5 text-sm font-semibold text-[var(--site-heading)] bg-[var(--brand-primary)] transition-all duration-300 hover:opacity-90">Reserve Table</a>
+            <a href="#contact" className="ml-4 px-6 py-2.5 text-sm font-semibold text-white bg-[var(--brand-primary)] transition-all duration-300 hover:opacity-90">Reserve Table</a>
           </div>
           <button
             className="md:hidden text-[var(--site-heading)] p-2"
@@ -111,7 +111,7 @@ export default function HomePage() {
               <a href="#gallery-section" className="text-sm tracking-wide text-[var(--site-heading)] hover:text-[var(--brand-secondary)] transition-colors">Gallery</a>
               <a href="#reviews-section" className="text-sm tracking-wide text-[var(--site-heading)] hover:text-[var(--brand-secondary)] transition-colors">Reviews</a>
               <a href="#location-section" className="text-sm tracking-wide text-[var(--site-heading)] hover:text-[var(--brand-secondary)] transition-colors">Location</a>
-              <a href="#contact" className="mt-2 px-6 py-3 text-sm font-semibold text-[var(--site-heading)] bg-[var(--brand-primary)] text-center">Reserve Table</a>
+              <a href="#contact" className="mt-2 px-6 py-3 text-sm font-semibold text-white bg-[var(--brand-primary)] text-center">Reserve Table</a>
             </div>
           </div>
         )}
@@ -136,7 +136,7 @@ export default function HomePage() {
                 Discover masterfully curated dishes paired with exceptional vintages in an atmosphere of prestige.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <a href="#contact" className="rounded-none text-[var(--site-heading)] px-8 py-4 text-sm font-semibold bg-[var(--brand-primary)] transition-all duration-300 hover:opacity-90">Reserve Your Experience</a>
+                <a href="#contact" className="rounded-none text-white px-8 py-4 text-sm font-semibold bg-[var(--brand-primary)] transition-all duration-300 hover:opacity-90">Reserve Your Experience</a>
                 <a href="#gallery-section" className="rounded-none px-8 py-4 text-sm font-semibold border border-[var(--site-border)] text-[var(--site-heading)] transition-all duration-300 hover:border-[var(--brand-secondary)]">View Gallery</a>
               </div>
               <div className="mt-6 flex items-center gap-3">
@@ -423,7 +423,7 @@ export default function HomePage() {
                   Live entertainment, floral décor, and full coordination
                 </li>
               </ul>
-              <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-[var(--site-heading)] bg-[var(--brand-primary)] hover:opacity-90 transition-opacity duration-300">
+              <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white bg-[var(--brand-primary)] hover:opacity-90 transition-opacity duration-300">
                 Enquire About Events
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </a>
@@ -626,7 +626,7 @@ export default function HomePage() {
             Every night at BilaZora is a singular occasion. Secure your table now and let our team curate an unforgettable culinary journey.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-            <a href="tel:+38932123456" className="px-10 py-4 text-sm font-semibold text-[var(--site-heading)] bg-[var(--brand-primary)] hover:opacity-90 transition-opacity duration-300">
+            <a href="tel:+38932123456" className="px-10 py-4 text-sm font-semibold text-white bg-[var(--brand-primary)] hover:opacity-90 transition-opacity duration-300">
               Call to Reserve
             </a>
             <a href="mailto:reservations@bilazora.mk" className="px-10 py-4 text-sm font-semibold border border-[var(--site-border)] text-[var(--site-heading)] hover:border-[var(--brand-secondary)] transition-colors duration-300">
@@ -673,7 +673,7 @@ export default function HomePage() {
             {/* Right */}
             <div>
               <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--brand-secondary)] mb-5">Reserve</p>
-              <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-[var(--site-heading)] bg-[var(--brand-primary)] hover:opacity-90 transition-opacity duration-300 mb-3">
+              <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[var(--brand-primary)] hover:opacity-90 transition-opacity duration-300 mb-3">
                 Book Now →
               </a>
               <p className="text-[var(--site-body)] text-xs mt-3">Reservations strongly recommended. Private suites available.</p>
