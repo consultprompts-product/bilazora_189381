@@ -153,30 +153,60 @@ export default function App({ Component, pageProps }) {
           if (servicesWrap && servicesGrid.children.length > 0) servicesWrap.style.display = '';
         }
 
+        // Menu: two-level clone — data.menu items are grouped by their own
+        // item.category into first-seen order, then one
+        // #menu-category-template is cloned per category (capped at this
+        // build's package tier: 5 categories) and, inside each of those
+        // clones, one nested [data-role="menu-item-template"] is cloned per
+        // item in that category (capped at 12 per category).
         var menuWrap = document.getElementById('menu-section');
-        var menuGrid = document.getElementById('menu-grid');
-        var menuTemplate = document.getElementById('menu-card-template');
-        if (menuGrid && menuTemplate) {
-          (data.menu || []).slice(0, 8).forEach(function (item) {
-            var card = menuTemplate.cloneNode(true);
-            card.removeAttribute('id');
-            card.style.display = '';
-            var titleEl = card.querySelector('[data-field="title"]');
-            if (titleEl) titleEl.textContent = item.title || '';
-            var descEl = card.querySelector('[data-field="description"]');
-            if (descEl) descEl.textContent = item.description || '';
-            var priceEl = card.querySelector('[data-field="price"]');
-            if (priceEl) priceEl.textContent = item.price || '';
-            var imgWrap = card.querySelector('[data-field="image-wrap"]');
-            var img = card.querySelector('[data-field="image"]');
-            if (item.image && imgWrap && img) {
-              imgWrap.style.display = '';
-              signAndSetImageEl(CLIENT_ID + '/' + item.image, img);
+        var menuCategoriesWrap = document.getElementById('menu-categories');
+        var categoryTemplate = document.getElementById('menu-category-template');
+        if (menuCategoriesWrap && categoryTemplate) {
+          var maxCategories = 5, maxItemsPerCategory = 12;
+          var byCategory = {};
+          var categoryOrder = [];
+          (data.menu || []).forEach(function (item) {
+            var cat = (item.category || '').trim() || 'Menu';
+            if (!byCategory[cat]) {
+              if (categoryOrder.length >= maxCategories) return;
+              byCategory[cat] = [];
+              categoryOrder.push(cat);
             }
-            menuGrid.appendChild(card);
+            if (byCategory[cat].length < maxItemsPerCategory) byCategory[cat].push(item);
           });
-          menuTemplate.remove();
-          if (menuWrap && menuGrid.children.length > 0) menuWrap.style.display = '';
+          categoryOrder.forEach(function (catName) {
+            var catBlock = categoryTemplate.cloneNode(true);
+            catBlock.removeAttribute('id');
+            catBlock.style.display = '';
+            var nameEl = catBlock.querySelector('[data-field="category-name"]');
+            if (nameEl) nameEl.textContent = catName;
+            var itemsWrap = catBlock.querySelector('[data-role="menu-category-items"]');
+            var itemTemplate = catBlock.querySelector('[data-role="menu-item-template"]');
+            if (itemsWrap && itemTemplate) {
+              byCategory[catName].forEach(function (item) {
+                var card = itemTemplate.cloneNode(true);
+                card.style.display = '';
+                var titleEl = card.querySelector('[data-field="title"]');
+                if (titleEl) titleEl.textContent = item.title || '';
+                var descEl = card.querySelector('[data-field="description"]');
+                if (descEl) descEl.textContent = item.description || '';
+                var priceEl = card.querySelector('[data-field="price"]');
+                if (priceEl) priceEl.textContent = item.price || '';
+                var imgWrap = card.querySelector('[data-field="image-wrap"]');
+                var img = card.querySelector('[data-field="image"]');
+                if (item.image && imgWrap && img) {
+                  imgWrap.style.display = '';
+                  signAndSetImageEl(CLIENT_ID + '/' + item.image, img);
+                }
+                itemsWrap.appendChild(card);
+              });
+              itemTemplate.remove();
+            }
+            menuCategoriesWrap.appendChild(catBlock);
+          });
+          categoryTemplate.remove();
+          if (menuWrap && categoryOrder.length > 0) menuWrap.style.display = '';
         }
 
         // Reviews: same clone-the-template pattern as services above (see
