@@ -533,7 +533,7 @@ export default function HomePage() {
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--site-body)]">Find Us</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl text-[var(--site-heading)] leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Visit Us &amp; <em className="text-[var(--brand-secondary)]">Hours</em>
+              Location
             </h2>
             <div className="mt-4 h-px w-16 bg-[var(--brand-primary)] opacity-60"></div>
           </div>
