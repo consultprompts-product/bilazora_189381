@@ -23,6 +23,11 @@
   --color-body: #D1E0D7;
 }
 
+body {
+  background-color: var(--site-bg);
+  color: var(--site-body);
+}
+
 /* Hero background photo's focal point, set independently per breakpoint
    from the Branding panel's click-to-position picker (client.hero_focal_
    desktop/mobile) and applied by nextJsAppFile via
