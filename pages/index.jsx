@@ -525,9 +525,9 @@ export default function HomePage() {
       </div>
 
       {/* LOCATION & HOURS */}
-      <section className="py-16 sm:py-24 px-6 lg:px-12 bg-[var(--site-surface)] border-t border-[var(--site-border)]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 fade-up">
+      <section className="py-24 lg:py-32 bg-[var(--site-surface)] border-t border-[var(--site-border)]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-16 fade-up">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-6 h-px bg-[var(--brand-primary)]"></span>
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--site-body)]">Find Us</span>
@@ -537,75 +537,85 @@ export default function HomePage() {
             </h2>
             <div className="mt-4 h-px w-16 bg-[var(--brand-primary)] opacity-60"></div>
           </div>
-          <div id="location-section" data-business-name="BilaZora" style={{ display: 'none' }} className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-none overflow-hidden relative" style={{ minHeight: '280px' }}>
-              <div id="location-map-placeholder" className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'color-mix(in srgb, var(--brand-primary) 10%, white)' }}>
-                <svg className="w-8 h-8" style={{ color: 'color-mix(in srgb, var(--brand-primary) 45%, white)' }} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+          <div id="location-section" data-business-name="BilaZora" style={{ display: 'none' }} className="grid lg:grid-cols-5 border border-[var(--site-border)]">
+            {/* Map — full-bleed, tall, carries more visual weight than the info panel */}
+            <div className="lg:col-span-3 relative" style={{ minHeight: '440px' }}>
+              <div id="location-map-placeholder" className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'color-mix(in srgb, var(--brand-primary) 12%, var(--site-bg))' }}>
+                <div className="text-center px-6">
+                  <svg className="w-8 h-8 mx-auto mb-3" style={{ color: 'var(--brand-secondary)' }} fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <p className="text-[11px] uppercase tracking-[0.2em]" style={{ color: 'var(--brand-secondary)' }}>Map Loading</p>
+                </div>
               </div>
-              <iframe id="location-map-embed" title="Map" style={{ display: 'none' }} className="absolute inset-0 w-full h-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-              <a id="location-directions-btn" href="#" target="_blank" rel="noopener noreferrer" style={{ display: 'none' }} className="absolute bottom-4 left-4 right-4 sm:right-auto rounded-full text-white text-sm font-semibold px-5 py-3 text-center shadow-lg hover:opacity-90 transition-opacity bg-[var(--brand-primary)]">Get Directions →</a>
+              <iframe id="location-map-embed" title="Map" style={{ display: 'none' }} className="absolute inset-0 w-full h-full border-0 grayscale-[15%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              <a id="location-directions-btn" href="#" target="_blank" rel="noopener noreferrer" style={{ display: 'none' }} className="absolute bottom-6 left-6 right-6 sm:right-auto inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3.5 text-center shadow-lg hover:opacity-90 transition-opacity bg-[var(--brand-primary)]">Get Directions →</a>
             </div>
-            <div className="rounded-none p-8 flex flex-col" style={{ backgroundColor: 'color-mix(in srgb, var(--brand-primary) 6%, var(--site-surface))' }}>
-              <div className="space-y-4 mb-6">
-                <div id="location-address-row" style={{ display: 'none' }} className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[var(--brand-primary)]">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <a id="location-address" href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium underline hover:no-underline text-[var(--site-heading)]"></a>
+
+            {/* Contact + hours panel */}
+            <div className="lg:col-span-2 px-6 py-10 sm:px-10 lg:p-12 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-[var(--site-border)]">
+              <div className="space-y-5 mb-10">
+                <div id="location-address-row" style={{ display: 'none' }} className="flex items-start gap-3.5">
+                  <svg className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: 'var(--brand-secondary)' }} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <a id="location-address" href="#" target="_blank" rel="noopener noreferrer" className="text-sm leading-relaxed hover:text-[var(--brand-secondary)] transition-colors text-[var(--site-heading)]"></a>
                 </div>
-                <div id="location-phone-row" style={{ display: 'none' }} className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[var(--brand-primary)]">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <a id="location-phone" href="#" className="text-sm text-[var(--site-body)]"></a>
+                <div id="location-phone-row" style={{ display: 'none' }} className="flex items-center gap-3.5">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--brand-secondary)' }} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <a id="location-phone" href="#" className="text-sm hover:text-[var(--brand-secondary)] transition-colors text-[var(--site-body)]"></a>
                 </div>
-                <div id="location-email-row" style={{ display: 'none' }} className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[var(--brand-primary)]">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <a id="location-email" href="#" className="text-sm text-[var(--site-body)]"></a>
+                <div id="location-email-row" style={{ display: 'none' }} className="flex items-center gap-3.5">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--brand-secondary)' }} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <a id="location-email" href="#" className="text-sm hover:text-[var(--brand-secondary)] transition-colors text-[var(--site-body)]"></a>
                 </div>
               </div>
-              <ul className="space-y-2.5 mt-auto pt-6" style={{ borderTop: '1px solid color-mix(in srgb, var(--brand-primary) 15%, transparent)' }}>
-                <li id="location-hours-monday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Monday</span>
-                  <span id="location-hours-monday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-                <li id="location-hours-tuesday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Tuesday</span>
-                  <span id="location-hours-tuesday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-                <li id="location-hours-wednesday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Wednesday</span>
-                  <span id="location-hours-wednesday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-                <li id="location-hours-thursday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Thursday</span>
-                  <span id="location-hours-thursday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-                <li id="location-hours-friday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Friday</span>
-                  <span id="location-hours-friday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-                <li id="location-hours-saturday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Saturday</span>
-                  <span id="location-hours-saturday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-                <li id="location-hours-sunday" style={{ display: 'none' }} className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-[var(--site-heading)]">Sunday</span>
-                  <span id="location-hours-sunday-value" className="opacity-70 text-[var(--site-body)]"></span>
-                </li>
-              </ul>
+              <div className="pt-8" style={{ borderTop: '1px solid var(--site-border)' }}>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-5" style={{ color: 'var(--brand-secondary)' }}>Hours</p>
+                <ul className="space-y-3">
+                  <li id="location-hours-monday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Monday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-monday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                  <li id="location-hours-tuesday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Tuesday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-tuesday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                  <li id="location-hours-wednesday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Wednesday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-wednesday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                  <li id="location-hours-thursday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Thursday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-thursday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                  <li id="location-hours-friday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Friday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-friday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                  <li id="location-hours-saturday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Saturday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-saturday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                  <li id="location-hours-sunday" style={{ display: 'none' }} className="flex items-baseline gap-3 text-sm">
+                    <span className="font-serif italic flex-shrink-0 text-[var(--site-heading)]">Sunday</span>
+                    <span className="flex-1 border-b border-dotted mb-1" style={{ borderColor: 'var(--site-border)' }}></span>
+                    <span id="location-hours-sunday-value" className="flex-shrink-0 text-[var(--site-body)]"></span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
